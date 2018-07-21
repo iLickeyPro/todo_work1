@@ -36,7 +36,8 @@ class PostsController < ApplicationController
     post.name = params[:name]
     post.content = params[:content]
     post.save
-    redirect_to("/")
+    result = post.save
+    redirect_to("/" ,flash:{result:1})
   end
 
   def move
