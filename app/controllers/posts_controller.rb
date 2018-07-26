@@ -27,14 +27,15 @@ class PostsController < ApplicationController
 
   def create
     post = Post.new(kind:0, name:params[:name], content:params[:content])
-    result = post.save
-    redirect_to("/" ,flash:{result:1})
+    post.save
+    redirect_to("/")
   end
 
   def rewrite
     post = Post.find_by(id: params[:id])
     post.name = params[:name]
     post.content = params[:content]
+    post.save
     result = post.save
     redirect_to("/" ,flash:{result:1})
   end
